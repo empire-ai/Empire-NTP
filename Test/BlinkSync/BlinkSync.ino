@@ -30,7 +30,9 @@ int ledPin = 33;  // RED(33) LED
 void setup() {
   // TODOD
   // setup timesync and change the blinking led Green (25) if the lamp is synced
+  // if running server use different color led
   // if(NTPmanager.sync("192.168.1.1",30)) ledPin = 25;
+  // if(NTPmanager.server()) ledPin = 26;
   
   // setup analog output for the white chanel on PWM channel 0
   ledcSetup(0, 19000, 12);
