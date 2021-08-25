@@ -31,8 +31,8 @@ void setup() {
   // TODOD
   // setup timesync and change the blinking led Green (25) if the lamp is synced
   // if running server use different color led, enable only one line
-  // if(NTPmanager.sync("192.168.1.1",30,sessionHash)) ledPin = 25;
-  // if(NTPmanager.server(NTPmanager.ControllerMode,sessionHash)) ledPin = 26;
+  // if(NTPmanager.sync("192.168.1.1",30,sessionHash[64])) ledPin = 25;
+  // if(NTPmanager.server(NTPmanager.ControllerMode,sessionHash[64])) ledPin = 26;
   
   // setup analog output for the white chanel on PWM channel 0
   ledcSetup(0, 19000, 12);
