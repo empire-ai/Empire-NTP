@@ -20,14 +20,44 @@
   https://www.arduino.cc/en/Tutorial/BuiltInExamples/Blink
 */
 
+#include <WiFi.h>
+#include <WiFiMulti.h>
+
+WiFiMulti wifiMulti;
+
 // the number of the LED pin
 int ledPin = 33;  // RED(33) LED
 
 // TODO
 // EmpNTP NTPmanager;
+// Create EmpNTP.test() functionality using aUnit library
+// Test are run in setup and other functions are never called (disable the xTaskCreatePinnedToCore())
+// Test ideas:
+//  1. Does server answer
+//  2. is there a time difference
+//  3. after second attempt is difference eq or better than before, is it within 3ms?
+// Start WiFi
 
 // the setup function runs once when you press reset or power the board
 void setup() {
+  Serial.begin(115200);
+  // WiFi
+  // client mode
+  wifiMulti.addAP("network1", "dsputnik");
+  // add another AP to the list, ESP will connect to the 1st one avaiable prefering by strength
+  // wifiMulti.addAP("network2", "pwd2");
+  Serial.println("Connecting Wifi...");
+  if(wifiMulti.run() == WL_CONNECTED) {
+    Serial.println("");
+    Serial.println("WiFi connected");
+    Serial.println("IP address: ");
+    Serial.println(WiFi.localIP());
+  }
+  // master mode:
+  // WiFi.mode(WIFI_AP);
+  // WiFi.mode(WIFI_AP_STA);
+  // WiFi.softAP("Voyager-T001", "dsputnik");
+  
   // TODOD
   // setup timesync and change the blinking led Green (25) if the lamp is synced
   // if running server use different color led, enable only one line
